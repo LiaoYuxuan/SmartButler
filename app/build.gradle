@@ -1,0 +1,77 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.1"   //或27.0.3
+    defaultConfig {
+        applicationId "com.exemple.lenvo.smartbutler"
+        minSdkVersion 15
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk {
+            // 设置支持的SO库架构
+            abiFilters 'armeabi', 'x86' //, 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+//添加本地仓库
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:24.0.1'
+    testCompile 'junit:junit:4.12'
+    //TabLayout
+    compile 'com.android.support:design:24.2.0'
+    //Bugly
+    compile 'com.tencent.bugly:crashreport:latest.release'
+    //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.1.9
+    compile 'com.tencent.bugly:nativecrashreport:latest.release'
+    //其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
+    //Bmob
+    compile('cn.bmob.android:bmob-sdk:3.5.0') {
+        exclude group: 'io.reactivex'
+    }
+    //CircleImageView
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+    //RxVolley
+    compile('com.kymjs.rxvolley:rxvolley:1.1.0') {
+        exclude group: 'io.reactivex'
+    }
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    //权限
+    compile 'me.weyye.hipermission:library:1.0.7'
+    //PhotoView
+    compile 'com.github.chrisbanes:PhotoView:1.3.0'
+    //下拉选择框 注意1.3.8不能
+    compile 'com.github.arcadefire:nice-spinner:1.3.1'
+    compile files('libs/Msc.jar')
+    compile files('libs/Sunflower.jar')
+    //悬浮窗权限
+    compile 'com.github.tyhjh:PermissionUtil:v1.0.5'
+    //NumberProgressBar
+    compile 'com.daimajia.numberprogressbar:library:1.4@aar'
+    //二维码生成
+    compile 'com.google.zxing:core:3.3.0'
+    //二维码扫描
+    compile 'com.journeyapps:zxing-android-embedded:3.5.0'
+    //百度地图
+    compile files('libs/BaiduLBS_Android.jar')
+}

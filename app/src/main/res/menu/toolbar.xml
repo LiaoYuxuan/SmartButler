@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/ic_search"
+        android:icon="@drawable/ic_search"
+        android:title="Backup"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/item_share"
+        android:icon="@mipmap/ic_wangyiyun"
+        android:orderInCategory="100"
+        android:title="网易云音乐"/>
+
+    <item
+        android:id="@+id/item_blacklist"
+        android:icon="@mipmap/ic_qqmusic"
+        android:orderInCategory="100"
+        android:title="QQ音乐"/>
+
+    <item
+        android:id="@+id/item_report"
+        android:icon="@mipmap/ic_kugou"
+        android:orderInCategory="100"
+        android:title="酷狗音乐"/>
+</menu>
